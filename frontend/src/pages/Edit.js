@@ -1,47 +1,49 @@
-import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import {useContext, useEffect, useState} from "react";
+import { useNavigate, useParams } from "react-router-dom"
 import { DiaryStateContext } from "../App";
 import DiaryEditor from "../components/DiaryEditor";
 
-type Props = {
-  id: number;
-  emotion: number;
-  content: string;
-  date: number;
-};
-const Edit = () => {
-  const useDiaryState = () => {
-    const state = useContext(DiaryStateContext);
-    if (!state) throw new Error("DiaryStateContext Not Found");
-    return state;
-  };
-  const [originData, setOriginData] = useState<Props | undefined>();
+const Edit = () =>{
+  const [originData,setOriginData] = useState();
+  //useNavigate를 통해 페이지를 이동
   const navigate = useNavigate();
-  const { id } = useParams() as { id: string };
-  const diaryList = useDiaryState();
+  const {id} = useParams();
+  const diaryList = useContext(DiaryStateContext);
 
-  useEffect(() => {
+  useEffect(()=>{
     const titleElem = document.getElementsByTagName("title")[0];
     titleElem.innerHTML = `감성 일기장 - ${id}번 일기 수정`;
-  }, []);
+  },[])
 
   useEffect(() => {
-    if (diaryList.length >= 1) {
-      const targetDiary = diaryList.find((it) => it.id === parseInt(id));
+    if (diaryList.length >= 1){
+      const targetDiary = diaryList.find(
+          (it) => parseInt(it.id) === parseInt(id));
 
-      if (targetDiary) {
+      if(targetDiary){
         setOriginData(targetDiary);
-      } else {
-        navigate("/", { replace: true });
+      }else{
+        navigate('/',{replace:true});
       }
     }
-  }, [diaryList, id]);
+  },[diaryList,id]);
 
   return (
-    <div>
-      {originData && <DiaryEditor isEdit={true} originData={originData} />}
-    </div>
-  );
-};
+      <div>
+        {originData && <DiaryEditor isEdit={true} originData={originData}/>}
+      </div>
+  )
+}
 
-export default Edit;
+export default Edit
+
+
+//비구조화 할당
+//파라미터 부분 이름은 변경되도 무관
+// const [searchParams,setSearchParams] = useSearchParams();
+
+//searchParams을 통해 query string으로 들어오는 값을 받고
+//setSearchParams으로 경로를 변경할 수 있음
+//QS 바꾸기 클릭 시
+// const id = searchParams.get('id');
+// const mode = searchParams.get('mode');

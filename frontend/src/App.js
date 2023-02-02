@@ -1,10 +1,11 @@
 import React, {useReducer,useRef} from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Home from './pages/Home';
-import Edit from './pages/Edit';
-import Diary from './pages/Diary';
-import New from './pages/New';
+import Home from "./pages/Home";
+import New from "./pages/New";
+import Edit from "./pages/Edit";
+import Diary from "./pages/Diary";
+
 
 const reducer = (state,action) => {
   let newState = [];

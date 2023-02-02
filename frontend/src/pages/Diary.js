@@ -1,4 +1,3 @@
-
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
 import { DiaryStateContext } from "../App";
@@ -64,8 +63,6 @@ const Diary = () =>{
             </div>
             )
     }
-
-
 }
 
 export default Diary

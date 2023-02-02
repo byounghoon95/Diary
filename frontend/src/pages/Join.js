@@ -3,25 +3,23 @@ import { useNavigate } from "react-router-dom";
 
 const Join = () => {
   const navigate = useNavigate();
-  const [account, setAccount] = useState({
-    id: "",
-    password: "",
-  });
+
+  const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
+  const [idValid, setIdValid] = useState(true);
+  const [pwValid, setPwValid] = useState(false);
   const inputStyle = {
     width: 'calc(100% - 60px)',
     marginBottom:0
   }
-  const [check, setCheck] = useState({
-    idChk: "",
-    pwChk: "",
-  });
 
-  // e.target.name = input의 name(id,password)
-  const onChangeAccount = (e) => {
-    setAccount({
-      ...account,
-      [e.target.name]: e.target.value,
-    });
+  const handleId = (e) => {
+    console.log(e.target.value);
+    setId(e.target.value);
+  };
+
+  const handlePw = (e) => {
+    setPassword(e.target.value);
   };
 
   const login = () => {
@@ -29,16 +27,11 @@ const Join = () => {
   };
 
   const doubleCheck = () => {
-    if (account.id.length >= 5) {
-      setCheck({
-        ...check,
-        idChk: "중복된 아이디가 없습니다"
-      });
+    console.log("asdf");
+    if (id.length > 5) {
+      setIdValid(true);
     } else {
-      setCheck({
-        ...check,
-        idChk: "아이디가 중복됩니다"
-      });
+      setIdValid(false);
     }
   }
 
@@ -56,26 +49,24 @@ const Join = () => {
           type="text"
           name="id"
           style={inputStyle}
-          onChange={onChangeAccount}
+          onChange={handleId}
           placeholder="id"
         />
         <button type="button" className="chk-btn" onClick={doubleCheck}>중복확인</button>
-        <span id="id-chk" name="idChk"></span>
-
+          {!idValid && (<span id="idMsg" name="idMsg">아이디가 중복됩니다.</span>)}
         <div>Password</div>
         <input
           type="password"
           name="password"
           style={{marginBottom:0}}
-          onChange={onChangeAccount}
+          onChange={handlePw}
           placeholder="password"
         />
-        <span id="pw-chk" name="pwChk"></span>
+        <span id="pwMsg" name="pwMsg"></span>
         <div>Name</div>
         <input
             type="text"
             name="name"
-            onChange={onChangeAccount}
             placeholder="name"
         />
         <input type="submit" value="회원가입" />

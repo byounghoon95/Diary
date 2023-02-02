@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import New from "./pages/New";
 import Edit from "./pages/Edit";
 import Diary from "./pages/Diary";
+import Login from "./pages/Login";
+import Join from "./pages/Join";
 
 
 const reducer = (state,action) => {
@@ -109,7 +111,9 @@ function App() {
           <BrowserRouter>
             <div className="App">
               <Routes>
-                <Route path="/" element={<Home/>}/>
+                <Route path="/" element={<Login/>}/>
+                <Route path="/join" element={<Join/>}/>
+                <Route path="/home" element={<Home/>}/>
                 <Route path="/new" element={<New/>}/>
                 <Route path="/edit/:id" element={<Edit/>}/>
                 <Route path="/diary/:id" element={<Diary/>}/>

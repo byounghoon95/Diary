@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Join = () => {
   const navigate = useNavigate();
   const [account, setAccount] = useState({
     id: "",
     password: "",
   });
+  const inputStyle = {
+    width: 'calc(100% - 60px)',
+  }
 
   // e.target.name = input의 name(id,password)
   const onChangeAccount = (e) => {
@@ -16,10 +19,6 @@ const Login = () => {
     });
   };
 
-  const join = () => {
-    navigate("/join");
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     navigate("/home");
@@ -27,31 +26,30 @@ const Login = () => {
 
   return (
     <div className="login-wrapper">
-      <h2>Login</h2>
+      <h2>JOIN</h2>
       <form method="get" onSubmit={handleSubmit} id="login-form">
+        <div>Id</div>
         <input
           type="text"
           name="id"
+          style={inputStyle}
           onChange={onChangeAccount}
           placeholder="id"
         />
+        <button className="chk-btn">중복확인</button>
+
+        <div>Password</div>
         <input
           type="password"
           name="password"
+          style={{marginBottom:0}}
           onChange={onChangeAccount}
           placeholder="password"
         />
-        {/*<label htmlFor="remember-check">*/}
-        {/*  <input type="checkbox" id="remember-check" />*/}
-        {/*  아이디 저장하기*/}
-        {/*</label>*/}
-        <input type="submit" value="Login" />
-        <div className="login-box">
-          <span onClick={join}>회원가입</span><span> | </span><span>아이디 찾기</span><span> | </span><span>비밀번호 찾기</span>
-        </div>
+        <spna>sadfdsf</spna>
+        <input  type="submit" value="Login" />
       </form>
-
     </div>
   );
 };
-export default Login;
+export default Join;

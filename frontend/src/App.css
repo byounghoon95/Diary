@@ -37,7 +37,7 @@ body {
     padding-right: 20px;
 }
 
-/* Login */
+/* Login / Join */
 .login-wrapper {
     width: 400px;
     height: 350px;
@@ -68,6 +68,23 @@ body {
     font-size: 16px;
     background-color: #64c964;
     margin-top: 20px;
+}
+
+.login-box{
+    text-align: center;
+}
+
+.login-box > span{
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.chk-btn {
+    color: #fff;
+    height: 48px;
+    font-size: 8px;
+    background-color: #64c964;
+    border-radius: 6px;
 }
 
 /*MyButton*/

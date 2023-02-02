@@ -157,6 +157,7 @@ footer{
     align-items: center;
     border: 1px solid #e2e2e2;
     border-top: 0px!important;
+    margin-top: 5px;
 }
 
 footer > div{
@@ -166,6 +167,7 @@ footer > div{
     width: 25%;
     justify-content: center;
     border-right: 1px solid #e2e2e2;
+    border-top: 1px solid #e2e2e2;
 }
 
 .container4{

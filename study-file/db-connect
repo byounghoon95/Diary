@@ -1,0 +1,7 @@
+yml에 디비를 적어주는 것 만으로는 디비가 연결되지 않는다
+워크벤치에 들어가 아래 명령어를 실행해 디비를 생성하고 유저를 생성해 권한을 주어야 한다.
+1. create database diary;
+2. show databases;
+3. create user 'me'@'%' identified by 'pwd';
+4. grant all privileges on diary.* to 'me'@'%';
+5. flush privileges;

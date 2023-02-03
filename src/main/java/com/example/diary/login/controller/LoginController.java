@@ -1,11 +1,14 @@
 package com.example.diary.login.controller;
 
+import com.example.diary.common.CodeEnum;
 import com.example.diary.dto.MemberDto;
+import com.example.diary.exception.CustomException;
 import com.example.diary.login.service.LoginService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,10 +18,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoginController {
     private final LoginService loginService;
+
     @ApiOperation(value = "회원가입", notes = "회원의 정보를 입력받아 등록한다")
     @PostMapping("/join")
     public void join(MemberDto dto) {
         loginService.join(dto);
+    }
 
+    @GetMapping("/exception")
+    public String exception() {
+        if (true) {
+            throw new CustomException(CodeEnum.UNKOWN_ERROR);
+        }
+        return loginService.exception();
     }
 }

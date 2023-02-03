@@ -16,4 +16,8 @@ public class LoginService {
         Member member = dto.toEntity();
         loginRepository.save(member);
     }
+
+    public String exception() {
+        return "error";
+    }
 }

@@ -1,4 +1,9 @@
-package com.example.diary.vo;
+package com.example.diary.entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,9 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+@Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "Member")
 @Entity
-public class MemberEntity {
+public class Member {
     @Id
     private Long id;
     @Column(unique = true, nullable = false)
@@ -17,5 +26,4 @@ public class MemberEntity {
     private String password;
     @NotNull
     private String name;
-
 }

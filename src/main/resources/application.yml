@@ -1,4 +1,8 @@
 Spring:
+  #  swagger 의존성 추가 후 서버 에러
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   profiles:
     active: local
   datasource:
@@ -22,3 +26,5 @@ logging:
   level:
     org.hibernate.SQL: debug
 #    org.hibername.type:
+server:
+  port: 8082

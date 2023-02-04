@@ -2,19 +2,18 @@ package com.example.diary.response;
 
 import com.example.diary.common.CodeEnum;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.http.HttpStatus;
 
 @Setter
+@Getter
 @Builder
 /* NON_NULL을 사용하면 세 변수 중 들어오지 않은 변수는 노출하지 않음 */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @NoArgsConstructor
 @AllArgsConstructor
 public class CommonResponse<T> {
-    private String returnCode;
+    private HttpStatus returnCode;
     private String returnMessage;
     private T data;
     

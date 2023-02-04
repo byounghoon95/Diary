@@ -27,8 +27,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public CommonResponse handlerException(Exception e) {
         return CommonResponse.builder()
-                .returnCode(CodeEnum.UNKOWN_ERROR.getCode())
-                .returnMessage(CodeEnum.UNKOWN_ERROR.getMessage())
+                .returnCode(CodeEnum.UNKNOWN_ERROR.getCode())
+                .returnMessage(CodeEnum.UNKNOWN_ERROR.getMessage())
                 .build();
     }
 }

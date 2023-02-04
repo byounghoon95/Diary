@@ -2,14 +2,16 @@ package com.example.diary.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.http.HttpStatus;
 
 @Getter
 @AllArgsConstructor
 public enum CodeEnum {
-    SUCCESS("0000","SUCCESS"),
-    UNKOWN_ERROR("9999","UNKNOWN_ERROR");
+    SUCCESS(HttpStatus.OK,"SUCCESS"),
+    MEMBER_DUPLICATED(HttpStatus.CONFLICT,""),
+    UNKNOWN_ERROR(HttpStatus.INTERNAL_SERVER_ERROR,"UNKNOWN_ERROR");
 
-    private String code;
+    private HttpStatus code;
     private String message;
 
 }

@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class MemberDto {
+public class MemberJoinDto {
     private final String memId;
     private final String password;
     private final String name;

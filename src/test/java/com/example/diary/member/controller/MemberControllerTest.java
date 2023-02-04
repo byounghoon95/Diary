@@ -52,7 +52,7 @@ class MemberControllerTest {
         String name = "이병훈";
 
         when(memberService.join(any()))
-                .thenThrow(new CustomException(CodeEnum.MEMBER_DUPLICATED.getCode(), memId + " 는 이미 등록된 아이디입니다."));
+                .thenThrow(new CustomException(CodeEnum.DUPLICATED_MEMBER, memId + " 는 이미 등록된 아이디입니다."));
 
         mockMvc.perform(post("/users/join")
                         .contentType(MediaType.APPLICATION_JSON)

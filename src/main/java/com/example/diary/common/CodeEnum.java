@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 public enum CodeEnum {
     SUCCESS(HttpStatus.OK,"SUCCESS"),
-    MEMBER_DUPLICATED(HttpStatus.CONFLICT,""),
+    DUPLICATED_MEMBER(HttpStatus.CONFLICT,"Member id is duplicated"),
     UNKNOWN_ERROR(HttpStatus.INTERNAL_SERVER_ERROR,"UNKNOWN_ERROR");
 
     private HttpStatus code;

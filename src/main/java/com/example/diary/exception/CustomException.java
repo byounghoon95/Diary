@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CustomException extends RuntimeException {
-    private HttpStatus returnCode;
+    private CodeEnum returnCode;
     private String returnMessage;
-
 }

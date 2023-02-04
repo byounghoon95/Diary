@@ -1,15 +1,17 @@
 package com.example.diary.dto;
 
 import com.example.diary.entity.MemberEntity;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-
+import lombok.Setter;
+@AllArgsConstructor
+@Setter
 @Getter
-@RequiredArgsConstructor
 public class MemberJoinDto {
-    private final String memId;
-    private final String password;
-    private final String name;
+    private String memId;
+    private String password;
+    private String name;
 
     public MemberEntity toEntity() {
         return MemberEntity.builder()

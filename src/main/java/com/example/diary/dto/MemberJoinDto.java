@@ -1,6 +1,6 @@
 package com.example.diary.dto;
 
-import com.example.diary.entity.Member;
+import com.example.diary.entity.MemberEntity;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -11,8 +11,8 @@ public class MemberJoinDto {
     private final String password;
     private final String name;
 
-    public Member toEntity() {
-        return Member.builder()
+    public MemberEntity toEntity() {
+        return MemberEntity.builder()
                 .memId(memId)
                 .name(password)
                 .password(name)

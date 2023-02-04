@@ -2,7 +2,7 @@ package com.example.diary.member.service;
 
 import com.example.diary.common.CodeEnum;
 import com.example.diary.dto.MemberJoinDto;
-import com.example.diary.entity.Member;
+import com.example.diary.entity.MemberEntity;
 import com.example.diary.exception.CustomException;
 import com.example.diary.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,11 +18,11 @@ public class MemberService {
         //memId 중복 체크
         memberRepository.findByMemId(dto.getMemId())
                 .ifPresent(member -> {
-                    throw new CustomException(CodeEnum.MEMBER_DUPLICATED.getCode(), dto.getMemId() + " 는 이미 등록된 아이디입니다.");
+                    throw new CustomException(CodeEnum.DUPLICATED_MEMBER, dto.getMemId() + " 는 이미 등록된 아이디입니다.");
                 });
-        Member member = dto.toEntity();
-        memberRepository.save(member);
+        memberRepository.save(dto.toEntity());
         return dto;
+
     }
 
     public String exception() {

@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Table(name = "Member")
 @Entity
-public class Member {
+public class MemberEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,4 +24,15 @@ public class Member {
     private String password;
     @NotNull
     private String name;
+
+    public MemberEntity(String memId, String password, String name) {
+        this.memId = memId;
+        this.password = password;
+        this.name = name;
+    }
+
+    public static MemberEntity of(String memId, String password, String name) {
+        MemberEntity memberEntity = new MemberEntity(memId, password, name);
+        return memberEntity;
+    }
 }

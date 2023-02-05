@@ -2,6 +2,7 @@ package com.example.diary.member.service;
 
 import com.example.diary.common.CodeEnum;
 import com.example.diary.dto.MemberJoinDto;
+import com.example.diary.dto.MemberLoginDto;
 import com.example.diary.entity.MemberEntity;
 import com.example.diary.exception.CustomException;
 import com.example.diary.member.repository.MemberRepository;
@@ -27,8 +28,12 @@ public class MemberService {
         return dto;
 
     }
-
+    public String login(MemberLoginDto dto) {
+        return "token";
+    }
     public String exception() {
         return "error";
     }
+
+
 }

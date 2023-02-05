@@ -2,6 +2,7 @@ package com.example.diary.member.controller;
 
 import com.example.diary.common.CodeEnum;
 import com.example.diary.dto.MemberJoinDto;
+import com.example.diary.dto.MemberLoginDto;
 import com.example.diary.member.service.MemberService;
 import com.example.diary.response.CommonResponse;
 import io.swagger.annotations.Api;
@@ -25,6 +26,11 @@ public class MemberController {
     @PostMapping("/join")
     public CommonResponse join(@RequestBody MemberJoinDto dto) {
         return new CommonResponse(CodeEnum.SUCCESS, memberService.join(dto));
+    }
+
+    public CommonResponse login(@RequestBody MemberLoginDto dto) {
+        String token = memberService.login(dto);
+        return new CommonResponse(CodeEnum.SUCCESS, token);
     }
 
 //    @GetMapping("/exception")

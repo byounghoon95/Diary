@@ -26,5 +26,7 @@ logging:
   level:
     org.hibernate.SQL: debug
 #    org.hibername.type:
+jwt:
+  secret: hello.world.ee.ff
 server:
   port: 8082

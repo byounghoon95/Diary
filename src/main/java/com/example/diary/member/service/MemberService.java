@@ -6,7 +6,9 @@ import com.example.diary.dto.MemberLoginDto;
 import com.example.diary.entity.MemberEntity;
 import com.example.diary.exception.CustomException;
 import com.example.diary.member.repository.MemberRepository;
+import com.example.diary.utils.JwtUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberService {
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder encoder;
+    @Value("${jwt.secret")
+    private String secretKey;
+    private Long expiredMs = 1000 * 60 * 60l; /* 1시간 */
     @Transactional
     public MemberJoinDto join(MemberJoinDto dto) {
         //memId 중복 체크
@@ -29,7 +34,7 @@ public class MemberService {
 
     }
     public String login(MemberLoginDto dto) {
-        return "token";
+        return JwtUtil.createJwt(dto.getMemId(), secretKey, expiredMs);
     }
     public String exception() {
         return "error";

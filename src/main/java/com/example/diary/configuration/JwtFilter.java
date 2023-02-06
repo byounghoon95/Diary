@@ -2,7 +2,6 @@ package com.example.diary.configuration;
 
 import com.example.diary.member.service.MemberService;
 import com.example.diary.utils.JwtUtil;
-import io.jsonwebtoken.Jwts;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -12,19 +11,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {
-
-
 
     private final MemberService memberService;
     private final String secretKey;
@@ -43,7 +38,8 @@ public class JwtFilter extends OncePerRequestFilter {
         }
 
         //Token꺼내기(Bearer 삭제)
-        String token = authorization.split(" ")[1];
+        String token = authorization.split(" ")[2];
+        log.info("token : {}",token);
 
         //Token Expired 되었는지 여부
         if (JwtUtil.isExpired(token, secretKey)) {
@@ -53,7 +49,8 @@ public class JwtFilter extends OncePerRequestFilter {
         }
 
         //Username에서 Token 꺼내기
-        String userName = "";
+        String userName = JwtUtil.getMemberId(token,secretKey);
+        log.info("userName : {}",userName);
 
         //권한 부여
         UsernamePasswordAuthenticationToken authenticationToken =

@@ -9,6 +9,11 @@ import java.util.Date;
 
 public class JwtUtil {
 
+    public static String getMemberId(String token, String secretKey) {
+        return Jwts.parser().setSigningKey(secretKey).parseClaimsJwt(token)
+                .getBody().get("userName", String.class);
+    }
+
     /* before(new Date()) 는 토큰이 만료된게 현재보다 이전이면 토큰은 만료된 것으로 처리 */
     public static boolean isExpired(String token, String secretKey) {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJwt(token)

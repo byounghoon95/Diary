@@ -25,6 +25,9 @@ public class MemberEntity {
     @NotNull
     private String name;
 
+    @Enumerated(EnumType.STRING)
+    private Authority authority;
+
     public MemberEntity(String memId, String password, String name) {
         this.memId = memId;
         this.password = password;

@@ -1,6 +1,7 @@
 package com.example.diary.member.service;
 
 import com.example.diary.common.CodeEnum;
+import com.example.diary.component.TokenProvider;
 import com.example.diary.dto.MemberJoinDto;
 import com.example.diary.dto.MemberLoginDto;
 import com.example.diary.entity.MemberEntity;
@@ -18,9 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberService {
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder encoder;
-    @Value("${jwt.secret")
-    private String secretKey;
-    private Long expiredMs = 1000 * 60 * 60l; /* 1시간 */
+    private final TokenProvider tokenProvider;
     @Transactional
     public MemberJoinDto join(MemberJoinDto dto) {
         //memId 중복 체크
@@ -31,14 +30,8 @@ public class MemberService {
         dto.setPassword(encoder.encode(dto.getPassword()));
         memberRepository.save(dto.toEntity());
         return dto;
-
     }
     public String login(MemberLoginDto dto) {
-        return JwtUtil.createJwt(dto.getMemId(), secretKey, expiredMs);
+        return tokenProvider.createToken(dto.getMemId());
     }
-    public String exception() {
-        return "error";
-    }
-
-
 }

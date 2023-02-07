@@ -28,5 +28,6 @@ logging:
 #    org.hibername.type:
 jwt:
   secret: hello.world.ee.ff
+  expired-ms: 86400
 server:
   port: 8082
